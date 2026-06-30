@@ -28,9 +28,14 @@
         <option value="multipagina">PDF con varias facturas: una factura por página</option>
       </select>
 
-      <label>Archivo</label>
-      <input type="file" name="archivo" accept="image/*,.pdf,application/pdf" capture="environment" required>
-
+      <label>Hacer foto o subir factura</label>
+<input 
+  type="file" 
+  name="archivo" 
+  accept="image/*,application/pdf" 
+  capture="environment"
+  required
+>
       <button type="submit">Enviar a Odoo</button>
     </form>
 

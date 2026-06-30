@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enviar facturas</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="card">
+    <h1>Enviar factura</h1>
+
+    {% if mensaje %}
+      <div class="ok">{{ mensaje }}</div>
+    {% endif %}
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+      <label>Empresa / proveedor</label>
+      <input type="text" name="empresa" placeholder="Ej: Makro, Coca-Cola..." required>
+
+      <label>Tipo de envío</label>
+      <select name="tipo_envio">
+        <option value="individual">Factura individual: imagen o PDF entero</option>
+        <option value="multipagina">PDF con varias facturas: una factura por página</option>
+      </select>
+
+      <label>Archivo</label>
+      <input type="file" name="archivo" accept="image/*,.pdf,application/pdf" capture="environment" required>
+
+      <button type="submit">Enviar a Odoo</button>
+    </form>
+
+    <p class="destino">Destino: {{ destinatario }}</p>
+  </main>
+</body>
+</html>
